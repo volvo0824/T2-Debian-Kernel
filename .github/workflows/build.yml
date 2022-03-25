@@ -51,7 +51,7 @@ jobs:
           path: /tmp/artifacts/*
 
       - name: Release
-        if: github.ref == 'refs/heads/Mainline'
+        if: github.ref == 'refs/heads/5.16'
         uses: softprops/action-gh-release@v1
         with:
           files: |
