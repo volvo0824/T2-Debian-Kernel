@@ -39,7 +39,7 @@ jobs:
           echo Building $VERSION-$REL
           echo "::set-output name=tag::${VERSION}-${REL}"
 
-          DOCKER_IMAGE=ubuntu:22.04
+          DOCKER_IMAGE=debian:unstable
           docker pull ${DOCKER_IMAGE}
           docker run \
           -t \
