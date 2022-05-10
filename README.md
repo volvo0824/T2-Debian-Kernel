@@ -1,8 +1,15 @@
-# T2 Ubuntu Kernel
+## THIS REPO IS A FORK of [T2 Ubuntu kernel](https://github.com/t2linux/T2-Ubuntu-Kernel)
 
-Ubuntu/Mint/Debian kernel with Apple T2 patches built-in. This repo will try to keep up with kernel new releases.
+Please go there for an updated kernel, unless you require a kernel
+build specifically for debian. Credits to @AdityaGarg8 for keeping the
+kernels up2date.
 
-![Build Kernel Package](https://github.com/t2linux/T2-Ubuntu-Kernel/actions/workflows/build.yml/badge.svg?branch=Mainline)
+## T2 Debian Kernel for Debian unstable
+
+Debian kernel with Apple T2 patches built-in. Kernels are build on
+debian unstable
+
+![Build Kernel Package](https://github.com/andersfugmann/T2-Debian-Kernel/actions/workflows/build.yml/badge.svg?branch=Mainline)
 
 This project is closely inspired by mikeeq/mbp-fedora-kernel and marcosfad/mbp-ubuntu-kernel. Thank you @mikeeq and @marcosfad for the scripts and setup.
 
@@ -10,44 +17,10 @@ Special thanks to @Redecorating for the CI.
 
 **If this repo helped you in any way, consider inviting a coffee to the people in the [credits](https://github.com/t2linux/T2-Ubuntu-Kernel#credits) (links given [here](https://wiki.t2linux.org/contribute/)).**
 
-## Pre installation steps
-
-Releases starting from 5.16.2 and 5.15.16 (LTS) or have apple-bce and apple-ibridge drivers built-into the kernel. Thus, you may remove the dkms versions of them by running :-
-
-```
-sudo rm -r /usr/src/apple-bce*
-sudo rm -r /usr/src/apple-ibridge*
-sudo rm -r /var/lib/dkms/apple-bce
-sudo rm -r /var/lib/dkms/apple-ibridge
-```
-
-In case you have used an iso with kernel version **5.8.x or lower**, then the above steps are compulsory.
-
-If you want to install an older kernel (i.e. older than 5.16.2 or 5.15.16 (LTS)), then follow the [DKMS Guide](http://wiki.t2linux.org/guides/dkms/) to uninstall old drivers and get new drivers for the kernels. It is required only once and must be done before installing a kernel from here.
-
-## INSTALLATION
-
-### Using the Kernel Upgrade script
-
-Firstly get a copy of the kernel upgrade script by running :-
-
-```bash
-sudo wget https://raw.githubusercontent.com/t2linux/T2-Ubuntu-Kernel/Mainline/update_t2_kernel -P /usr/bin
-sudo chmod 755 /usr/bin/update_t2_kernel
-```
-
-Now, whenever you wish to upgrade your kernel, run :-
-
-```bash
-update_t2_kernel -v
-```
-#### Case of users wanting latest LTS kernels
-
-In case you want to download the latest LTS release, instead of the Mainline ones, then edit the script by running `sudo gedit /usr/bin/update_t2_kernel` and change `use_lts=false` to `use_lts=true` and save the file. Now, running `update_t2_kernel -v` shall upgrade the kernel to the latest LTS release.
 
 ### Download package manually
 
-Download the .deb packages of **linux-headers** and **linux-image** of the kernel you wish to install from the [releases](https://github.com/t2linux/T2-Ubuntu-Kernel/releases) section.
+Download the .deb packages of **linux-headers** and **linux-image** of the kernel you wish to install from the [releases](https://github.com/andersfugmann/T2-Debian-Kernel/releases) section.
 
 Install **linux-headers** first and then **linux-image** using `apt` and restart your Mac. In case you do not know how to do so, follow the instructions given below. Else you are good to go.
 
@@ -56,28 +29,6 @@ On terminal, type `sudo apt install ` and then drag and drop the **linux-headers
 Do the similar process for **linux-images** package.
 
 Restart your Mac.
-
-### Building yourself
-
-Clone the repo using
-```bash
-git clone https://github.com/t2linux/T2-Ubuntu-Kernel
-```
-
-Open a terminal window and run
-
-```bash
-cd T2-Ubuntu-Kernel
-sudo ./build.sh
-```
-
-The kernel shall take around an hour to compile. After that you shall find three .deb packages in `/root/work`.
-
-Install the **linux-headers** package first using `apt`. In case you do not know how to do so, follow the instructions described in the above **The easy way** section. Similarly install the **linux-image** package too.
-
-Restart your Mac.
-
-You may then delete the `/root/work` directory using `sudo rm -r /root/work` to free up space.
 
 ## Docs
 
