@@ -2,7 +2,14 @@
 
 set -eu -o pipefail
 
-KERNEL_VERSION=5.18.3
+USE_T2LINUX_REPO=false
+if [[ ($USE_T2LINUX_REPO != true) && ($USE_T2LINUX_REPO != false) ]]
+then
+echo "Abort!"
+exit 1
+fi
+
+KERNEL_VERSION=5.18.4
 PKGREL=1
 
 APPLE_BCE_REPOSITORY=https://github.com/t2linux/apple-bce-drv.git
