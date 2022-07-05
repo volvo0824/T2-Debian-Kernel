@@ -9,7 +9,7 @@ echo "Abort!"
 exit 1
 fi
 
-KERNEL_VERSION=5.18.7
+KERNEL_VERSION=5.18.9
 PKGREL=1
 
 APPLE_BCE_REPOSITORY=https://github.com/t2linux/apple-bce-drv.git
