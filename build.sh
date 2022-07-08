@@ -80,7 +80,7 @@ cat "${REPO_PATH}/templates/default-config" | \
 echo >&2 "===]> Info: Make oldconfig... "
 make -C ${KERNEL_PATH} olddefconfig
 
-sed -i 's/CONFIG_DEBUG_INFO[ ]*=.*/# CONFIG_DEBUG_INFO is not set/g' ${KERNEL_PATH}/.config
+sed -i 's/CONFIG_DEBUG_INFO[ ]*=.*/# CONFIG_DEBUG_INFO=n/g' ${KERNEL_PATH}/.config
 
 # Get rid of the dirty tag
 echo "" > ${KERNEL_PATH}/.scmversion
