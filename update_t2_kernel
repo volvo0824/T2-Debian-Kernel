@@ -1,5 +1,5 @@
 #!/bin/bash
-#upgrading script apple linux T2 Kernel
+#upgrading script apple linux T2 Kernel fork by andersfugmann https://github.com/andersfugmann/
 
 if [ $USER != root ]
 then
@@ -24,9 +24,9 @@ lts_version=5.15
 
 if [[ $use_lts != true ]]
 then
-latest=$(curl -sL https://github.com/t2linux/T2-Ubuntu-Kernel/releases/latest/ | grep "<title>Release" | awk -F " " '{print $2}' )
+latest=$(curl -sL https://https://github.com/andersfugmann/T2-Debian-Kernel/releases/latest/ | grep "<title>Release" | awk -F " " '{print $2}' )
 else
-getkernelver=$(curl -sL https://github.com/t2linux/T2-Ubuntu-Kernel/releases | grep "{{ urlEncodedRefName }}" | grep -v "generic" | grep v${lts_version} | cut -d "{" -f 3 | cut -c 25- | head -1)
+getkernelver=$(curl -sL https://https://github.com/andersfugmann/T2-Debian-Kernel/releases/latest/ | grep "{{ urlEncodedRefName }}" | grep -v "generic" | grep v${lts_version} | cut -d "{" -f 3 | cut -c 25- | head -1)
 latest=${getkernelver::-76}
 fi
 
@@ -43,8 +43,8 @@ currentk=$(uname -r)
 
 if [ \( $latestk != $currentk \) ]; then
 	
-	curl -L https://github.com/t2linux/T2-Ubuntu-Kernel/releases/download/${latest}/linux-headers-${latestk}_${latestkver}_amd64.deb > headers.deb
-	curl -L https://github.com/t2linux/T2-Ubuntu-Kernel/releases/download/${latest}/linux-image-${latestk}_${latestkver}_amd64.deb > image.deb
+	curl -L https://github.com/andersfugmann/T2-Debian-Kernel/releases/download/${latest}/linux-headers-${latestk}_${latestkver}_amd64.deb > headers.deb
+	curl -L https://github.com/andersfugmann/T2-Debian-Kernel/releases/download/${latest}/linux-image-${latestk}_${latestkver}_amd64.deb > image.deb
 
 	if [ -f headers.deb -a -f image.deb ]; then
 	#install
